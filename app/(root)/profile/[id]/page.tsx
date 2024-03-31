@@ -1,16 +1,18 @@
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { getUserInfo } from "@/lib/actions/user.action";
-import { SignedIn, auth } from "@clerk/nextjs";
+// import { SignedIn, auth } from "@clerk/nextjs";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getJoinedDate } from "@/lib/utils";
 import ProfileLink from "@/components/shared/ProfileLink";
 import Stats from "@/components/shared/Stats";
+import { URLProps } from "@/types";
 
-const Page = async ({ params, searchParams }) => {
-  const { userId: clerkId } = auth();
+const Page = async ({ params, searchParams }: URLProps) => {
+  // const { userId: clerkId } = auth();
+
   const userInfo = await getUserInfo({ userId: params.id });
 
   return (
@@ -58,7 +60,7 @@ const Page = async ({ params, searchParams }) => {
           </div>
         </div>
         <div className="flex justify-end max-sm:mb-5 max-sm:w-full sm:mt-3">
-          <SignedIn>
+          {/* <SignedIn>
             {clerkId === userInfo.user.clerkId && (
               <Link href="/profile/edit">
                 <Button className="paragraph-medium btn-secondary text-dark300_light900 min-h-[46px] min-w-[175px] px-4 py-3">
@@ -66,7 +68,8 @@ const Page = async ({ params, searchParams }) => {
                 </Button>
               </Link>
             )}
-          </SignedIn>
+          </SignedIn> */}
+          <h1>SignedIn domponent</h1>
         </div>
       </div>
       <Stats />

@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+// eslint-disable-next-line tailwindcss/no-custom-classname
 const badgeVariants = cva(
   "focus:ring-ring inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2",
   {
@@ -16,7 +17,6 @@ const badgeVariants = cva(
           "bg-destructive text-destructive-foreground hover:bg-destructive/80 border-transparent",
         outline: "text-foreground",
       },
-      c,
     },
     defaultVariants: {
       variant: "default",
