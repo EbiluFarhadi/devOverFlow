@@ -8,15 +8,14 @@ import { getQuestionById } from "@/lib/actions/question.action";
 import { getUserById } from "@/lib/actions/user.action";
 import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
 import { URLProps } from "@/types";
-// import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Page = async ({ params }: URLProps) => {
-  // const { userId: clerkId } = auth();
+  const { userId: clerkId } = auth();
 
-  const clerkId = "123456";
   let mongoUser;
   if (clerkId) {
     mongoUser = await getUserById({ userId: clerkId });
@@ -95,7 +94,7 @@ const Page = async ({ params }: URLProps) => {
       </div>
       <AllAnswers
         questionId={result._id}
-        userId={mongoUser._id}
+        user={mongoUser._id}
         totalAnswers={result.answers.length}
       />
       <Answer
