@@ -20,8 +20,8 @@ const UserSchema = new Schema({
   name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String },
-  bio: { type: String },
+  password: { type: String, required: true },
+  bio: { type: String, default: "" },
   picture: { type: String, required: true },
   location: { type: String },
   portfolioWebsite: { type: String, required: false },
@@ -29,6 +29,7 @@ const UserSchema = new Schema({
   saved: [{ type: Schema.Types.ObjectId, ref: "Question" }],
   joinedAt: { type: Date, default: Date.now },
 });
+UserSchema.index({ email: 1, username: 1 });
 
 const User = models.User || model("User", UserSchema);
 

@@ -93,5 +93,5 @@ export async function POST(req: Request) {
     });
     return NextResponse.json({ massage: "OK", user: deletedUser });
   }
-  return new Response("", { status: 200 });
+  return new Response("", { status: 201 });
 }
