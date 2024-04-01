@@ -9,14 +9,14 @@ import ParseHTML from "./ParseHTML";
 import Votes from "./Votes";
 interface PropsAllAnswers {
   questionId: string;
-  userId: string;
+  user: string;
   totalAnswers: number;
   page?: number;
-  filter?: number;
+  filter?: string;
 }
 const AllAnswers = async ({
   questionId,
-  userId,
+  user,
   totalAnswers,
   page,
   filter,
@@ -29,7 +29,7 @@ const AllAnswers = async ({
         <FilterHome filters={AnswerFilters} />
       </div>
       <div>
-        {result.answers.map((answer) => (
+        {result!.answers.map((answer) => (
           <article key={answer._id} className="light-border border-b py-10">
             <div className="flex items-center justify-between ">
               <div className="mb-8 flex w-full flex-col-reverse justify-between gap-5 sm:flex-row sm:items-center sm:gap-2 ">
@@ -57,11 +57,11 @@ const AllAnswers = async ({
                   <Votes
                     type="Answer"
                     itemId={JSON.stringify(answer.id)}
-                    userId={JSON.stringify(userId)}
+                    userId={JSON.stringify(user)}
                     upvotes={answer.upvotes.length}
-                    hasupVoted={answer.upvotes.includes(userId)}
+                    hasupVoted={answer.upvotes.includes(user)}
                     downvotes={answer.downvotes.length}
-                    hasdownVoted={answer.downvotes.includes(userId)}
+                    hasdownVoted={answer.downvotes.includes(user)}
                   />
                 </div>
               </div>

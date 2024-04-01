@@ -4,6 +4,7 @@ import RenderTag from "../shared/RenderTag";
 import Metric from "../shared/Metric";
 import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
 interface QuestionProps {
+  clerkId?: string | null;
   _id: string;
   title: string;
   tags: {
@@ -11,24 +12,25 @@ interface QuestionProps {
     name: string;
   }[];
   author: {
-    _id: string;
+    clerkId: string;
     name: string;
     picture: string;
   };
-  upvotes: string[];
   views: number;
+  upvotes: string[];
   answers: Array<object>;
   createdAt: Date;
 }
 const QuestionCard = ({
+  clerkId,
   _id,
   title,
   tags,
   author,
-  upvotes,
   views,
-  answers,
+  upvotes,
   createdAt,
+  answers,
 }: QuestionProps) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11 ">
@@ -56,7 +58,7 @@ const QuestionCard = ({
           alt="user"
           value={author.name}
           title={`- asked ${getTimestamp(createdAt)}`}
-          href={`/profile/${author._id}`}
+          href={`/profile/${author.clerkId}`}
           isAuthor
           textStyles="small-medium text-dark400_light700"
         />
